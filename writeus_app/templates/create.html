@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<!-- <style>
+    .novel-text{
+        display: none;
+    }
+    .typing{
+        display: inline-block; 
+        animation-name: cursor; 
+        animation-duration: 0.3s; 
+        animation-iteration-count: infinite; 
+    }
+    @keyframes cursor{ 
+        0%{border-right: 1px solid #fff} 
+        50%{border-right: 1px solid #000} 
+        100%{border-right: 1px solid #fff} 
+    }
+</style> -->
+
+<span>{{novel.body}}</span>
+<span class="novel-text">{{novel.tmp_body}}</span>
+<span class="typing"></span>
+
+<form action="{%url 'create' novel.id %}" method="POST">
+    {%csrf_token%}
+    <input class="search-input" name="body" id="body" type="text"/>
+</form>
+
+<script type="text/javascript">
+    var typingTxt = $(".novel-text").text();
+
+    const text = document.querySelector(".typing");
+    let i = 0;
+
+    function typing(){
+        if (i < typingTxt.length) {
+        let txt = typingTxt.charAt(i);
+        text.innerHTML += txt;
+        i++;
+        }
+    }
+    setInterval(typing, 50)
+</script>
+
+{% endblock %}

@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'jquery.fullPage.css' %}" type="text/css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<style>
+    .sentence1{
+        font-family: 'Highway' !important;
+        font-size: 10vmin; 
+        /* font-style: italic; */
+        width: 10em; 
+        border: 1px; 
+        position:absolute; 
+        bottom:-1vw;
+        left:15vw;
+    }
+    .sentence2{
+        font-family: 'Highway' !important;
+        font-size: 10vmin; 
+        /* font-style: italic; */
+        width: 10em; 
+        border: 1px; 
+        position:absolute; 
+        bottom:-1.5vw;
+        left:15vw;
+    }
+    .logo1{
+        font-family: 'Dancing Script' !important; 
+        font-size: 27px;
+        position:relative;
+        top: 20px;
+        left:32px;
+    }
+    .logo2{
+        font-family: 'Dancing Script' !important; 
+        font-size: 10vw;
+        position:absolute;
+        bottom:3vw;
+        left:34vw;
+    }
+    .fade_obj{
+        display: none;
+    }
+
+    /* section 2 */
+    .fp-viewing-section2 a{
+        color:#000;
+    }
+    .fp-viewing-section2 header nav ul li{
+        border-color:#000;
+    }
+    /* section 3 (firstwrite) */
+    .fp-viewing-firstwrite .logo1{
+        color: #fff;
+    }
+    .fp-viewing-firstwrite .write-button{
+        display: none;
+    }
+    .fp-viewing-firstwrite #fp-nav ul li a span{
+        background: #fff;
+    }
+    /* section 4 */
+    .fp-viewing-section4 .logo1{
+        color: #fff;
+    }
+    .fp-viewing-section4 .write-button{
+        display: none;
+    }
+    .fp-viewing-section4 #fp-nav ul li a span{
+        background: #fff;
+    }
+</style>
+
+
+<!-- header -->
+<header>
+    <div class="logo1">WriteUs</div>
+    <nav>
+        <ul>
+            <li data-menuanchor="section1" style="display: none;"></li>
+            <li data-menuanchor="seciton2" style="display: none;"></li>
+            <li data-menuanchor="firstwrite" class="write-button"><a href="#firstwrite">글 작성하기</a></li>
+            <li data-menuanchor="seciton4" style="display: none;"></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- main content -->
+<main id="fullpage">
+    <!-- section 1 -->
+    <section class="section" id="section_1">
+        <div class="fade_obj">
+                <div class="purpleRock"><img src="{% static 'purpleRock.png' %}" style="float: right; position:absolute; width:60vw; height:60vw; bottom:-0.25vw; right:-23vw;"></div>
+                <div class="charactor-wrap"><img src="{% static 'woman.png' %}" style="float: right; position:absolute; width:50vw; height:50vw; top:-21.5vw; right:5vw;"></div>
+                <div class="paint"><img src="{% static 'pinkRock.png' %}" style="float: right; position:absolute; width:50vw; height:50vw; bottom:-45vw; right:60vw"></div>
+                <div class="sentence1" ><p class="sentence-wrap" >함께 만들어가는<br>소설</p></div>
+        </div>
+    </section>
+    <!-- section 2 -->
+    <section class="section" id="section_2">
+        <div class="fade_obj">
+            <div class="purpleRock"><img src="{% static 'leaves.png' %}" style="float: right; position:absolute; width:38vw; height:38vw; top:-35.5vw; right:37vw;"></div>
+            <div class="charactor-wrap"><img src="{% static 'man.png' %}" style="float: right; position:absolute; width:61vw; height:80vw; top:-26vw; right:-10vw;"></div>
+            <div class="paint"><img src="{% static 'paint.png' %}" style="float: right; position:absolute; width:50vw; height:50vw; bottom:-48vw; right:50vw"></div>
+            <div class="sentence2"><span class="sentence-wrap">지금 바로<br></span><span class="sentence-wrap" style="color: #ff6584;">시작</span><span class="sentence-wrap">해볼까요?</span></div>
+        </div>
+    </section>
+    <!-- section 3 (input) -->
+    <section class="section" id="section_3">
+        <div class="fade_obj">
+            <section class="main-section">
+                <div class="logo-wrap">
+                    <div class="logo2">WriteUs</div>
+                    <!-- <div class="logo-tmp"><img src="{% static 'logo.png' %}"></div> -->
+                </div>
+                <div class="searchbar-wrap">
+                    <i class="fas fa-search"></i>
+                    <form action="{%url 'home'%}" method="POST">
+                        {%csrf_token%}
+                        <input class="search-input" name="body" id="body" type="text" style="background-color:transparent;"/>
+                    </form>
+                    <i class="fas fa-keyboard"></i>
+                </div> 
+            </section>
+        </div>
+    </section>
+    <!-- footer -->
+    <footer class="section fp-auto-height">
+        <div class="foot-wrap">
+            <span>© 2022 YAI-Con WriteUs. All rights reserved.</span>
+        </div>
+    </footer>
+</main>
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+    	$('#fullpage').fullpage({
+            anchors: ['section1', 'section2','firstwrite', 'section4'],
+    		// autoScrolling:true,
+    		// scrollHorizontally: true,
+            navigation:true,
+            navigationPosition: 'right',
+            sectionsColor: ['#ffffff', '#fff9fa', '#3f3d56'],
+
+            afterLoad: function(anchorLink, index) {
+                console.log(anchorLink);
+                if (index == 1) {
+                    $('#section_1').find('.fade_obj').fadeIn(1000);
+                    // $('#section_1').find('.sentence-wrap').fadeIn(3000);
+                }
+                // if (index == 2) {
+                //     $('#section_2').find('.fade_obj').fadeIn(1500);
+                // }
+                // if (index == 3) {
+                //     $('#section_3').find('.fade_obj').fadeIn(1200);
+                // }
+            },
+
+            onLeave: function(index, nextIndex, direction) {
+                console.log("onLeave: " + index);
+                console.log("onLeave-next: " + nextIndex);
+                console.log("onLeave-dir: " + direction);
+
+                if (index == 1) {
+                    $('#section_1').find('.fade_obj').delay(50).fadeOut(900);
+                }
+                if (index == 2) {
+                    $('#section_2').find('.fade_obj').delay(50).fadeOut(900);
+
+                }
+                if (index == 3 && direction == 'up') {
+                    $('#section_3').find('.fade_obj').delay(50).fadeOut(900);
+
+                }
+                if (nextIndex == 1 && direction == 'up') {
+                    $('#section_1').find('.fade_obj').delay(50).fadeIn(1100);
+                }
+                if (nextIndex == 2) {
+                    $('#section_2').find('.fade_obj').delay(50).fadeIn(1100);
+                }
+                if (nextIndex == 3 || nextIndex == 4) {
+                    $('#section_3').find('.fade_obj').delay(50).fadeIn(1100);
+                    // $('.write-button').css('display', 'none');
+                }
+            }
+           
+            // fadingEffect: true,
+            
+            // scrollingSpeed: 700,
+            // onLeave: function(anchorLink, index) {
+            //     $.fn.fullpage.setScrollingSpeed(0);
+            //     $('.fp-section').find('.fp-slidesContainer').hide();
+            // },
+        
+        
+            // Display the slides container by fading it in after the next slide has been loaded.
+            // afterLoad: function(anchorLink, index) {
+            //     $('.fp-section').find('.fp-slidesContainer').fadeIn(700);
+            //     $.fn.fullpage.setScrollingSpeed(SCROLLING_SPEED);
+            // },
+            // afterLoad: function(anchorLink, index){
+            //     $.keyframe.define([{
+            //         name: 'fadeInUp',
+            //         '0%': {'opacity': '0', 'transform': 'translate3d(0, 100%, 0)'},
+            //         to: {'opacity': '1', 'transform': 'translateZ(0)'},
+            //     }]);
+            //     $('.fade_obj').playKeyframe("fadeInUp 1s");
+            //     // $('.fade_obj').fadeIn();/
+                
+            // }
+    	});
+    	//methods
+    	// $.fn.fullpage.setAllowScrolling(false);
+    });
+</script>
+
+{% endblock %}
