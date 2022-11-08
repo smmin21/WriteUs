@@ -7,10 +7,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 <style>
+    .aTag{
+        display: block;
+        padding: 4px 25px 7px 27px;
+        border: solid 1.5px #fff;
+        border-radius: 25px;
+        background-color: rgb(255, 255, 255, 0.2);
+    }
     .sentence1{
         font-family: 'Highway' !important;
         font-size: 10vmin; 
-        /* font-style: italic; */
         width: 10em; 
         border: 1px; 
         position:absolute; 
@@ -20,12 +26,27 @@
     .sentence2{
         font-family: 'Highway' !important;
         font-size: 10vmin; 
-        /* font-style: italic; */
         width: 10em; 
         border: 1px; 
         position:absolute; 
         bottom:-1.5vw;
         left:15vw;
+    }
+    .sentence3{
+        font-family: 'Highway' !important;
+        font-size: 4.5vw; 
+        width: 11em; 
+        border: 1vw; 
+        position:absolute; 
+        top:-2.5vw;
+        bottom:4vw;
+        left:25.5vw;
+    }
+    .sentence4{
+        font-family: 'Highway' !important;
+        font-size: 1.5vw; 
+        width: 30em; 
+        border: 1vw;
     }
     .logo1{
         font-family: 'Dancing Script' !important; 
@@ -49,7 +70,7 @@
     .fp-viewing-section2 a{
         color:#000;
     }
-    .fp-viewing-section2 header nav ul li{
+    .fp-viewing-section2 .aTag{
         border-color:#000;
     }
     /* section 3 (firstwrite) */
@@ -82,7 +103,7 @@
         <ul>
             <li data-menuanchor="section1" style="display: none;"></li>
             <li data-menuanchor="seciton2" style="display: none;"></li>
-            <li data-menuanchor="firstwrite" class="write-button"><a href="#firstwrite">글 작성하기</a></li>
+            <li data-menuanchor="firstwrite" class="write-button"><a href="#firstwrite" class="aTag">글 작성하기</a></li>
             <li data-menuanchor="seciton4" style="display: none;"></li>
         </ul>
     </nav>
@@ -113,14 +134,25 @@
         <div class="fade_obj">
             <section class="main-section">
                 <div class="logo-wrap">
-                    <div class="logo2">WriteUs</div>
+                    <!-- <div class="logo2">WriteUs</div> -->
                     <!-- <div class="logo-tmp"><img src="{% static 'logo.png' %}"></div> -->
                 </div>
+                <div class="texts"><img src="{% static 'texts.png' %}" style="float: right; position:absolute; width:180vw; height:40vw; top: -21.5vw; right: -57vw;"></div>
+                <div class="sentence3" ><span class="sentence-wrap" style="color: #ff6584;">첫 문장</span><span class="sentence-wrap" style="color: #ffff;">을 입력해보세요!</div>
+                <div class="yellowBubble"><img src="{% static 'yellowBubble.png' %}" style="float: right; position:absolute; width:48vw; height:15vw; top: 8.75vw; right: 6vw;"></div>
+                <div class="yellowBubble"><img src="{% static 'yellowBubble.png' %}" style="float: right; position:absolute; width:48vw; height:15vw; top: 16.25vw; right: 6vw;"></div>
+                <div class="blusBubble"><img src="{% static 'blueBubble.png' %}" style="float: right; position:absolute; width:50vw; height:15vw; top: 12.5vw; right: 45vw;"></div>
+                <div class="blusBubble"><img src="{% static 'blueBubble.png' %}" style="float: right; position:absolute; width:50vw; height:15vw; top: 20vw; right: 45vw;"></div>
+                <div class="sentence4" ><span class="sentence-wrap" style="color: #000000; position:absolute; top: 14.7vw; right: 19vw;">하늘을 우러러 한 점 부끄럼 없기를</span></div>
+                <div class="sentence4" ><span class="sentence-wrap" style="color: #000000; position:absolute; top: 22.2vw; right: 22vw;">별을 사랑하는 마음으로</span></div>
+                <div class="sentence4" ><span class="sentence-wrap" style="color: #000000; position:absolute; top: 18.45vw; right: 55vw;">잎새에 이는 바람에도 나는 괴로워했다.</span></div>
+                <div class="sentence4" ><span class="sentence-wrap" style="color: #000000; position:absolute; top: 25.95vw; right: 58vw;">모든 죽어가는 것을 사랑해야지.</span></div>
                 <div class="searchbar-wrap">
-                    <i class="fas fa-search"></i>
+                    <i class="fa-solid fa-pencil"></i>
+                    <!-- <i class="fas fa-search"></i> -->
                     <form action="{%url 'home'%}" method="POST">
                         {%csrf_token%}
-                        <input class="search-input" name="body" id="body" type="text" style="background-color:transparent;"/>
+                        <input class="search-input" name="body" id="body" type="text" style="background-color:transparent;" autocomplete="off"/>
                     </form>
                     <i class="fas fa-keyboard"></i>
                 </div> 
