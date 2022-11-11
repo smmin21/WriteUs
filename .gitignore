@@ -16,6 +16,7 @@ media
 # <django-project-name>/staticfiles/
 staticfiles/
 writeus_app/static/
+writeus_app/gpt/
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files

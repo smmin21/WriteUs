@@ -3,7 +3,6 @@ from django.utils import timezone
 from .models import *
 from .apps import WriteusAppConfig
 
-# Create your views here.
 def home(request):
     if (request.method == 'POST'):
         new_novel = Novel()
