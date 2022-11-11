@@ -2,38 +2,86 @@
 {% block content %}
 
 {% load static %}
-<!-- <style>
-    .novel-text{
-        display: none;
+<style>
+    @font-face {
+        font-family: 'Arita-dotum-Medium';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
     }
-    .typing{
-        display: inline-block; 
-        animation-name: cursor; 
-        animation-duration: 0.3s; 
-        animation-iteration-count: infinite; 
+    .create-page {
+        height: 100vh;
+        position: relative;
+        overflow: hidden !important;
+        touch-action: none;
+        background: #3f3d56;
     }
-    @keyframes cursor{ 
-        0%{border-right: 1px solid #fff} 
-        50%{border-right: 1px solid #000} 
-        100%{border-right: 1px solid #fff} 
+    .output-wrap{
+        font-family: 'Arita-dotum-Medium';
+        position: absolute;
+        width: 70vw;
+        height: 30vw;
+        top: 9vw;
+        left: 11vw;
+        align-content: center;
+        margin: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+        overflow-x: hidden;
+        overflow-x: auto;
+        overflow-y: auto;
     }
-</style> -->
+    .input-wrap {
+        border: solid 3px #b2b3b3;
+        position: absolute;
+        width: 55vw;
+        height: 50px;
+        top: 41.5vw;
+        left: -7vw;
+        right:-5vw;
+        border-radius: 50px;
+        display: flex;
+        justify-content: space-evenly;
+        align-content: center;
+        margin: auto;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .input-sentence{
+        width:52vw;
+        height:50px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-family: 'Arita-dotum-Medium';
+    }
+    
+</style>
 
-<span>{{novel.body}}</span>
-<span class="novel-text">{{novel.tmp_body}}</span>
-<span class="typing"></span>
+<div class="create-page">
+    <div class="texts2"><img src="{% static 'texts2.png' %}" style="float: right; position:absolute; width:180vw; height:40vw; top: -7vw; right: -57vw;"></div>
+    <div class="paper"><img src="{% static 'paper.png' %}" style="float: right; position:absolute; width:100vw; height:100vh; bottom: 0vw; right: 0vw;"></div>
 
-<form action="{%url 'create' novel.id %}" method="POST">
-    {%csrf_token%}
-    <input class="search-input" name="body" id="body" type="text"/>
-</form>
+    <div class="output-wrap">
+        <span>{{novel.body}}</span>
+        <span class="novel-text">{{novel.tmp_body}}</span>
+        <span class="typing"></span>
+    </div>
+
+    <div class="input-wrap">
+        <form action="{%url 'create' novel.id %}" method="POST">
+            {%csrf_token%}
+            <input class="input-sentence" name="body" id="body" type="text" autocomplete="off"/>
+        </form>
+    </div>
+</div>
+
 
 <script type="text/javascript">
     var typingTxt = $(".novel-text").text();
-
     const text = document.querySelector(".typing");
     let i = 0;
-
     function typing(){
         if (i < typingTxt.length) {
         let txt = typingTxt.charAt(i);
