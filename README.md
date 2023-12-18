@@ -3,7 +3,7 @@
 
 # WriteUs : 너와 나의 소설
 
-Welcome to the "너와 나의 소설" project! This unique endeavor allows users to collaboratively create a novel in a relay format. Input a sentence, and let AI join you on the journey to craft a captivating story.
+Welcome to the **"너와 나의 소설"** project! This unique endeavor allows users to collaboratively create a novel in a relay format. Input a sentence, and let AI join you on the journey to craft a captivating story.
 
 <br>
 
@@ -23,7 +23,7 @@ The heart of our project lies in Kakao Brain's [KoGPT](https://github.com/kakaob
 <br>
 
 ## Project Resources
-Dive into the narrative details of the '너와 나의 소설' project by exploring our comprehensive resources. Click the badge below to watch the YouTube presentation or download the PDF file and gain an in-depth understanding of our collaborative storytelling journey.
+Dive into the narrative details of the **"너와 나의 소설"** project by exploring our comprehensive resources. Click the badge below to watch the **YouTube** presentation or download the **PDF** file and gain an in-depth understanding of our collaborative storytelling journey.
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=ckFFwVCe9pU&t=12s">
